@@ -1,5 +1,14 @@
 # CpGame
 
+## Author Note
+
+While playing Cyberpunk 2077, I came across this minigame for an activity in the game called 'Breach Protocol' and thought it would be a fun
+project to try to recreate in a language (Angular 8) that I previously had no experience in. 
+
+
+##
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server
@@ -25,3 +34,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
