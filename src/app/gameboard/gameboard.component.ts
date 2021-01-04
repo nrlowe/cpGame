@@ -24,10 +24,7 @@ export class GameboardComponent {
 
   ngOnInit(): void {
     this.buffer = new Buffer(0);
-    if(this.buffer.score > 0){
-      this._gbservice.initializeBuffer(this.buffer);
-      console.log(this.buffer.score);
-    }
+    this._gbservice.initializeBuffer(this.buffer);
   }
 
   initializeBoard(){
@@ -39,7 +36,7 @@ export class GameboardComponent {
   }
 
   gameOver(){
-    
+
   }
 
 }
