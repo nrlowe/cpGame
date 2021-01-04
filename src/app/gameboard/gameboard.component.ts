@@ -27,7 +27,7 @@ export class GameboardComponent {
   }
 
   initializeBoard(){
-    
+    //this._gbservice  
   }
 
 }

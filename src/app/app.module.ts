@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GameboardComponent } from './gameboard/gameboard.component';
 import { BoardComponent } from './gameboard/board/board.component';
 import { BufferComponent } from './gameboard/buffer/buffer.component';
+import { ModelsDirective } from './models.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BufferComponent } from './gameboard/buffer/buffer.component';
     NavbarComponent,
     GameboardComponent,
     BoardComponent,
-    BufferComponent
+    BufferComponent,
+    ModelsDirective
   ],
   imports: [
     BrowserModule,
