@@ -5,7 +5,7 @@ export class Buffer {
     firstBuffer: String[];
     secondBuffer: String[];
     thirdBuffer: String[];
-    constructor(){
-        
+    constructor(score: Number){
+        this.score = score;
     }
 }

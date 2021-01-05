@@ -1,4 +1,4 @@
-<div class = "matrix">
+<!-- <div class = "matrix">
     <table>
         <tbody>
             <tr *ngFor = "let value of board">
@@ -6,8 +6,10 @@
             </tr>
         </tbody>
     </table>
-</div> 
+</div>  -->
 
 <div class="buffer">
-    <p>55</p>
+    <div id="bufferOne" *ngFor = "let value of buffer.firstBuffer">
+        <p>{{value}}</p>
+    </div>
 </div>

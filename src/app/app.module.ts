@@ -10,9 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TitleComponent } from './title/title.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GameboardComponent } from './gameboard/gameboard.component';
-import { BoardComponent } from './gameboard/board/board.component';
-import { BufferComponent } from './gameboard/buffer/buffer.component';
-import { ModelsDirective } from './models.directive';
 
 @NgModule({
   declarations: [
@@ -21,10 +18,7 @@ import { ModelsDirective } from './models.directive';
     ListComponent,
     TitleComponent,
     NavbarComponent,
-    GameboardComponent,
-    BoardComponent,
-    BufferComponent,
-    ModelsDirective
+    GameboardComponent
   ],
   imports: [
     BrowserModule,
