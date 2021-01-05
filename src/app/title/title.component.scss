@@ -1,7 +1,37 @@
-@import url('https://fonts.google.com/specimen/Audiowide?selection.family=Audiowide|Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto&display=swap');
 
-a {
-    margin: 0;
-    font-family: 'Audiowide|Roboto', 'sans-serif';
-    font-size: 18px;
+body{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.titleContainer{
+    margin-top: 20em;
+    margin-bottom: 5em;
+    text-align: center;
+    justify-content: center;
+    .title {
+        margin: 0;
+        font-family: 'Audiowide', cursive;;
+        font-size: 4em;
+        text-decoration: none;
+        width: 800px;
+    }
+}
+
+.appInfo{
+    margin-bottom: 5em;
+    text-align: center;
+    justify-content: center;
+    p {
+        margin: 0;
+        font-family: 'Audiowide', cursive;
+        font-size: 1.5em;
+        margin-bottom: 2em;
+    }
+
+    .cp77Img {
+        text-decoration: none;
+    }
 }
