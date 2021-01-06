@@ -19,7 +19,7 @@ export class GameboardService {
     // Starting buffer size is 2
     buffer.difficulty = 0;
     buffer.series = 1;
-    buffer.firstBuffer = this.produceSeriesOne(buffer);
+    buffer.firstSequence = this.produceSeriesOne(buffer);
     return buffer;
   }
 

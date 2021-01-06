@@ -1,10 +1,11 @@
 export class Buffer {
+    size: Number
     series: Number
     difficulty: Number
     score: Number
-    firstBuffer: String[];
-    secondBuffer: String[];
-    thirdBuffer: String[];
+    firstSequence: String[];
+    secondSequence: String[];
+    thirdSequence: String[];
     constructor(score: Number){
         this.score = score;
     }
