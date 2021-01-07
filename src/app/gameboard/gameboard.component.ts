@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameboardService } from './gameboard.service';
-import { Buffer } from '../models/buffer';
+import { Protocol } from '../models/protocol';
 
 @Component({
   selector: 'app-gameboard',
@@ -9,7 +9,7 @@ import { Buffer } from '../models/buffer';
 })
 export class GameboardComponent {
 //TODO: Add difficulties in future?
-  public buffer: Buffer;
+  public protocol: Protocol;
   public board: String[];
   public boardConstants: String[] = ["BD","55","E9","FF","7A","1C","D5"];
 
@@ -23,12 +23,12 @@ export class GameboardComponent {
   }
 
   ngOnInit(): void {
-    this.buffer = new Buffer(0);
-    this._gbservice.initializeBuffer(this.buffer);
+    this.protocol = new Protocol(0);
+    this._gbservice.initializeBuffer(this.protocol);
   }
 
   initializeBoard(){
-    //this._gbservice  
+    //this._gbservice
   }
 
   nextRound(){

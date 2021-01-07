@@ -1,11 +1,11 @@
 import { Injectable, Input } from '@angular/core';
-import { Buffer } from '../models/buffer';
+import { Protocol } from '../models/protocol';
 
 @Injectable({
   providedIn: 'root'
-})
+ })
 export class GameboardService {
-  public buffer = Buffer;
+  public protocol = Protocol;
   public boardConstants: String[] = ["BD","55","E9","FF","7A","1C","D5"];
 
   constructor() { }
@@ -47,6 +47,37 @@ export class GameboardService {
       }
     }
     return matrix;
+  }
+
+  private randomizeSequnces(protocol:Protocol){
+      String[] finalSequence = [];
+      Number[] choices = [];
+      bool notRandom true;
+      var numOfSequences = 0;
+      if(typeof protocol.firstSequence !== 'undefined'){
+        numOfSequences++;
+      }
+      if(typeof protocol.secondSequence !== 'undefined'){
+        numOfSequences++;
+      }
+      if(typeof protocol.thirdSequence !== 'undefined'){
+        numOfSequences++;
+      }
+      //TODO: beter way to do this
+      while(choices.length != numOfSequences){
+        var input = randomInt(numOfSequences);
+        if(randomInt == 1 && !choices.includes(2)){
+          finalSequence = finalSequence.concat(protocol.firstSequence);
+          choices.push(randomInt);
+        } else if (randomInt == 2 && !choices.includes(2)){
+          finalSequence = finalSequence.concat(protocol.secondSequence);
+          choices.push(randomInt);
+        } else if(randomInt == 3 && !choices.includes(3)){
+          finalSequence = finalSequence.concat(protocol.thirdSequence);
+          choices.push(randomInt);
+        }
+      }
+      return finalSequence;
   }
 
   private produceSeriesOne(buffer: Buffer){

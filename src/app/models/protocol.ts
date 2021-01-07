@@ -1,6 +1,6 @@
-export class Buffer {
+export class Protocol {
     size: Number
-    series: Number
+    buffer: Number
     difficulty: Number
     score: Number
     firstSequence: String[];
