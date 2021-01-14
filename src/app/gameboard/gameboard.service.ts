@@ -14,46 +14,54 @@ export class GameboardService {
 
   }
 
-  initializeBuffer(buffer: Buffer){
-    buffer.score = 0;
+  initializeBuffer(protocol: Protocol){
+    protocol.score = 0;
     // Starting buffer size is 2
     //Change buffer object name to protocol? something else?
-    buffer.difficulty = 0;
-    buffer.series = 1;
-    buffer.firstSequence = this.produceSeriesOne(buffer);
-    return buffer;
+    protocol.difficulty = 0;
+    protocol.firstSequence = this.produceSeriesOne(protocol);
+    protocol.matrix = this.produceMatrix(3, this.randomizeSequnces(protocol))
+    return protocol;
   }
 
   produceBuffer(){
 
   }
 
-  produceMatrix(size: Number, sequences:String[]){
+  produceMatrix(size: number, sequence:String[]){
     //Sequence as a maze through the matrix
     //how to make it recursive?
     var matrixSize = size + 1;
+    console.log(matrixSize);
     var row = 0;
     var column = 0;
-    String[][] matrix = String[matrixSize][matrixSize]
+    var matrix: String[][] = [];
     //combine the sequences together so its one sequnce, not array of sequences,
     //random configs based off difficulty
-    for(String[] sequence : sequences){
-      var firstPlacement = randomInt(matrixSize);
-      for(var i = 0; i < sequence.length; i++){
-        if(matrix[firstPlacement][column] == null){
-          matrix[firstPlacement][column] = sequence[i];
-          row = firstPlacement;
-        }
+    for(let i = 0; i < matrixSize; i++){
+      var rowArray :String[] = [];
+      for(let j = 0; j < matrixSize; j++){
+        rowArray.push(this.boardConstants[this.randomInt(this.boardConstants.length)]);
+      }
+      matrix.push(rowArray);
+    }
+    //TODO
+    var firstPlacement = this.randomInt(matrixSize);
+    for(let i = 0; i < sequence.length; i++){
+      if(matrix[firstPlacement][column] == null){
+        matrix[firstPlacement][column] = sequence[i];
+        row = firstPlacement;
       }
     }
+    
     return matrix;
   }
 
   private randomizeSequnces(protocol:Protocol){
-      String[] finalSequence = [];
-      Number[] choices = [];
-      bool notRandom true;
-      var numOfSequences = 0;
+      var finalSequence: String[] = [];
+      var choices: Number[] = [];
+      var notRandom: boolean = true;
+      var numOfSequences = 1;
       if(typeof protocol.firstSequence !== 'undefined'){
         numOfSequences++;
       }
@@ -63,26 +71,28 @@ export class GameboardService {
       if(typeof protocol.thirdSequence !== 'undefined'){
         numOfSequences++;
       }
+      console.log(numOfSequences);
       //TODO: beter way to do this
       while(choices.length != numOfSequences){
-        var input = randomInt(numOfSequences);
-        if(randomInt == 1 && !choices.includes(2)){
+        var input = this.randomInt(numOfSequences);
+        console.log(input);
+        if(input == 1 && !choices.includes(2)){
           finalSequence = finalSequence.concat(protocol.firstSequence);
-          choices.push(randomInt);
-        } else if (randomInt == 2 && !choices.includes(2)){
+          choices.push(input);
+        } else if (input == 2 && !choices.includes(2)){
           finalSequence = finalSequence.concat(protocol.secondSequence);
-          choices.push(randomInt);
-        } else if(randomInt == 3 && !choices.includes(3)){
+          choices.push(input);
+        } else if(input == 3 && !choices.includes(3)){
           finalSequence = finalSequence.concat(protocol.thirdSequence);
-          choices.push(randomInt);
+          choices.push(input);
         }
       }
       return finalSequence;
   }
 
-  private produceSeriesOne(buffer: Buffer){
+  private produceSeriesOne(protocol: Protocol){
     var seriesOneSize = 0;
-    if(buffer.difficulty == 0){
+    if(protocol.difficulty == 0){
         seriesOneSize = 2;
     }
     return this.constructBuffer(seriesOneSize);

@@ -9,7 +9,7 @@ import { Protocol } from '../models/protocol';
 })
 export class GameboardComponent {
 //TODO: Add difficulties in future?
-  public protocol: Protocol;
+  protocol: Protocol;
   public board: String[];
   public boardConstants: String[] = ["BD","55","E9","FF","7A","1C","D5"];
 

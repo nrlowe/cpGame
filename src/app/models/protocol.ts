@@ -6,6 +6,7 @@ export class Protocol {
     firstSequence: String[];
     secondSequence: String[];
     thirdSequence: String[];
+    matrix: String[][];
     constructor(score: Number){
         this.score = score;
     }
