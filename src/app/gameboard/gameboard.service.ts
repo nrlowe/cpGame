@@ -16,8 +16,9 @@ export class GameboardService {
 
   initializeBuffer(protocol: Protocol){
     protocol.score = 0;
-    // Starting buffer size is 2
-    //Change buffer object name to protocol? something else?
+
+    // Starting sequence size is 2
+
     protocol.difficulty = 0;
     protocol.firstSequence = this.produceSeriesOne(protocol);
     protocol.matrix = this.produceMatrix(3, this.randomizeSequnces(protocol))
@@ -32,7 +33,6 @@ export class GameboardService {
     //Sequence as a maze through the matrix
     //how to make it recursive?
     var matrixSize = size + 1;
-    console.log(matrixSize);
     var row = 0;
     var column = 0;
     var matrix: String[][] = [];
@@ -71,7 +71,6 @@ export class GameboardService {
       if(typeof protocol.thirdSequence !== 'undefined'){
         numOfSequences++;
       }
-      console.log(numOfSequences);
       //TODO: beter way to do this
       while(choices.length != numOfSequences){
         var input = this.randomInt(numOfSequences);

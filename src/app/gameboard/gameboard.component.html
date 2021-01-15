@@ -7,11 +7,27 @@
         </tbody>
     </table>
 </div>  -->
-
 <div class="buffer">
-    <div id="bufferOne" *ngFor = "let value of protocol.firstSequence">
-        <p>{{value}}</p>
-    </div>
+
+</div>
+<div class="sequences">
+    <table class="sequencetable">
+        <tr class="sequencerow">
+            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.firstSequence">
+                {{rowValue}}
+            </th>
+        </tr>
+        <tr class="sequencerow">
+            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
+                {{rowValue}}
+            </th>
+        </tr>
+        <tr class="sequencerow" >
+            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
+                {{rowValue}}
+            </th>
+        </tr>
+    </table>
 </div>
 
 <div class="matrix">

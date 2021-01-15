@@ -1,8 +1,4 @@
-body{
-    margin:0px; width: 100%; height: 100%;
-    background-size: 100% 100% 100% 100%;
-    background-color: black;
-}
+
 span {
     font-weight: bold;
     background: lightgray;
@@ -12,7 +8,7 @@ span {
 }
 
 .home {
-    //background-color: black;
+    background-color: black;
     height: 100%;
     .play-container {
         
@@ -51,18 +47,4 @@ span {
     }
 
 
-}
-
-@media screen and (max-width: 700px){
-    body{
-        background-color: blue;
-    }
-}
-.active {
-    background-color: yellow;
-    border: 4px solid black;
-}
-
-.notactive {
-    background-color: lightgray;
 }
