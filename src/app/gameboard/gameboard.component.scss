@@ -1,0 +1,27 @@
+.matrixtable{
+    background-color: white;
+    font-size: 5em;
+}
+.matrixtable .matrixrow{
+    background-color: purple;
+}
+.matrixtable tr:hover{
+    background-color: mediumorchid;
+}
+.matrixrowvalue {
+    color: mediumblue;
+}
+.matrixrowvalue:hover {
+    background-color: lightskyblue;
+}
+
+col.colhover{
+    background-color: peru;
+}
+
+.matrixrowvalue.seeallvalues{
+    background-color: black;
+    color: white;
+}
+
+

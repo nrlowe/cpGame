@@ -39,4 +39,13 @@ export class GameboardComponent {
 
   }
 
+  //UI Functions
+  colhover(){
+
+  }
+
+  seeallvalues(){
+
+  }
+
 }

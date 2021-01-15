@@ -33,8 +33,11 @@
 <div class="matrix">
     <table class="matrixtable">
         <tr class="matrixrow" *ngFor = "let row of protocol.matrix">
+        
             <th class="matrixrowvalue" *ngFor = "let rowValue of row">
-                {{rowValue}}
+                <col name="columnindex" value= i/>
+                {{rowValue.value}}
+                {{rowValue.colIndex}}
             </th>
         </tr>
     </table>

@@ -1,3 +1,5 @@
+import { Matrix } from "./matrix";
+
 export class Protocol {
     size: Number
     buffer: Number
@@ -6,7 +8,7 @@ export class Protocol {
     firstSequence: String[];
     secondSequence: String[];
     thirdSequence: String[];
-    matrix: String[][];
+    matrix: Matrix[][];
     constructor(score: Number){
         this.score = score;
     }

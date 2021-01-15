@@ -1,4 +1,5 @@
 import { Injectable, Input } from '@angular/core';
+import { Matrix } from '../models/matrix';
 import { Protocol } from '../models/protocol';
 
 @Injectable({
@@ -35,24 +36,24 @@ export class GameboardService {
     var matrixSize = size + 1;
     var row = 0;
     var column = 0;
-    var matrix: String[][] = [];
+    var matrix: Matrix[][] = [];
     //combine the sequences together so its one sequnce, not array of sequences,
     //random configs based off difficulty
     for(let i = 0; i < matrixSize; i++){
-      var rowArray :String[] = [];
+      var rowArray :Matrix[] = [];
       for(let j = 0; j < matrixSize; j++){
-        rowArray.push(this.boardConstants[this.randomInt(this.boardConstants.length)]);
+        rowArray.push(new Matrix((this.boardConstants[this.randomInt(this.boardConstants.length)]), j)) ;
       }
       matrix.push(rowArray);
     }
     //TODO
-    var firstPlacement = this.randomInt(matrixSize);
-    for(let i = 0; i < sequence.length; i++){
-      if(matrix[firstPlacement][column] == null){
-        matrix[firstPlacement][column] = sequence[i];
-        row = firstPlacement;
-      }
-    }
+    // var firstPlacement = this.randomInt(matrixSize);
+    // for(let i = 0; i < sequence.length; i++){
+    //   if(matrix[firstPlacement][column] == null){
+    //     matrix[firstPlacement][column] = sequence[i];
+    //     row = firstPlacement;
+    //   }
+    // }
     
     return matrix;
   }
