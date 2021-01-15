@@ -9,7 +9,17 @@
 </div>  -->
 
 <div class="buffer">
-    <div id="bufferOne" *ngFor = "let value of buffer.firstBuffer">
+    <div id="bufferOne" *ngFor = "let value of protocol.firstSequence">
         <p>{{value}}</p>
     </div>
+</div>
+
+<div class="matrix">
+    <table class="matrixtable">
+        <tr class="matrixrow" *ngFor = "let row of protocol.matrix">
+            <th class="matrixrowvalue" *ngFor = "let rowValue of row">
+                {{rowValue}}
+            </th>
+        </tr>
+    </table>
 </div>

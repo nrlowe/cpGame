@@ -1,11 +1,12 @@
-export class Buffer {
+export class Protocol {
     size: Number
-    series: Number
+    buffer: Number
     difficulty: Number
     score: Number
     firstSequence: String[];
     secondSequence: String[];
     thirdSequence: String[];
+    matrix: String[][];
     constructor(score: Number){
         this.score = score;
     }
