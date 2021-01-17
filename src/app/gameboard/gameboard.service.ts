@@ -42,7 +42,7 @@ export class GameboardService {
     for(let i = 0; i < matrixSize; i++){
       var rowArray :Matrix[] = [];
       for(let j = 0; j < matrixSize; j++){
-        rowArray.push(new Matrix((this.boardConstants[this.randomInt(this.boardConstants.length)]), j)) ;
+        rowArray.push(new Matrix((this.boardConstants[this.randomInt(this.boardConstants.length)]), j, i)) ;
       }
       matrix.push(rowArray);
     }
@@ -75,7 +75,6 @@ export class GameboardService {
       //TODO: beter way to do this
       while(choices.length != numOfSequences){
         var input = this.randomInt(numOfSequences);
-        console.log(input);
         if(input == 1 && !choices.includes(2)){
           finalSequence = finalSequence.concat(protocol.firstSequence);
           choices.push(input);

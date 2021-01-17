@@ -32,11 +32,12 @@
 
 <div class="matrix">
     <table class="matrixtable">
-        <tr class="matrixrow" *ngFor = "let row of protocol.matrix">
-        
-            <th class="matrixrowvalue" *ngFor = "let rowValue of row">
-                <col name="columnindex" value= i/>
+        <tr *ngFor = "let row of protocol.matrix" [ngClass] = "setActiveRow(row)">
+            <th *ngFor = "let rowValue of row" headers=rowValue.rowIndex (click)="matrixSelection(rowValue)"
+            [ngClass] = "setActiveColumn(rowValue.colIndex)">
+                <col class="matrixcolvalue" span={{rowValue.colIndex}}/>
                 {{rowValue.value}}
+                {{rowValue.rowIndex}}
                 {{rowValue.colIndex}}
             </th>
         </tr>

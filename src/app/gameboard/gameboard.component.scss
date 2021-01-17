@@ -2,12 +2,13 @@
     background-color: white;
     font-size: 5em;
 }
-.matrixtable .matrixrow{
+.matrixtable {
     background-color: purple;
+    th:hover{
+        background-color: blue;
+    }
 }
-.matrixtable tr:hover{
-    background-color: mediumorchid;
-}
+
 .matrixrowvalue {
     color: mediumblue;
 }
@@ -22,6 +23,15 @@ col.colhover{
 .matrixrowvalue.seeallvalues{
     background-color: black;
     color: white;
+}
+
+.rowActive {
+    background-color: gold;
+}
+
+
+.colActive {
+    background-color: gold;
 }
 
 
