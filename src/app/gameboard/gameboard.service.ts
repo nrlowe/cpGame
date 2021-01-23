@@ -37,12 +37,12 @@ export class GameboardService {
     var row = 0;
     var column = 0;
     var matrix: Matrix[][] = [];
-    //combine the sequences together so its one sequnce, not array of sequences,
+    //combine the sequences together so its one seq unce, not array of sequences,
     //random configs based off difficulty
     for(let i = 0; i < matrixSize; i++){
       var rowArray :Matrix[] = [];
       for(let j = 0; j < matrixSize; j++){
-        rowArray.push(new Matrix((this.boardConstants[this.randomInt(this.boardConstants.length)]), j, i)) ;
+        rowArray.push(new Matrix((this.boardConstants[this.randomInt(this.boardConstants.length)]), j, i, true)) ;
       }
       matrix.push(rowArray);
     }

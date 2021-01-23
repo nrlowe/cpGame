@@ -2,7 +2,8 @@ import { Matrix } from "./matrix";
 
 export class Protocol {
     size: Number
-    buffer: Number
+    buffer: String[] = [];
+    bufferLength: number;
     difficulty: Number
     score: Number
     firstSequence: String[];

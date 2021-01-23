@@ -7,39 +7,54 @@
         </tbody>
     </table>
 </div>  -->
-<div class="buffer">
+<section class="game-grid">
+    <div class="empty1">
+        Breaching Time Remaining
+    </div>
+    <div class="buffer">
+        <table>
+            <tr>
+                <td *ngFor = "let buffer of protocol.buffer">
+                    {{buffer}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="exit-bar" onclick="exitgame()">
 
-</div>
-<div class="sequences">
-    <table class="sequencetable">
-        <tr class="sequencerow">
-            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.firstSequence">
-                {{rowValue}}
-            </th>
-        </tr>
-        <tr class="sequencerow">
-            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
-                {{rowValue}}
-            </th>
-        </tr>
-        <tr class="sequencerow" >
-            <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
-                {{rowValue}}
-            </th>
-        </tr>
-    </table>
-</div>
+    </div>
+    <div class="matrix">
+        <table class="matrixtable">
+            <tr *ngFor = "let row of protocol.matrix" [ngClass] = "setActiveRow(row)">
+                <th *ngFor = "let rowValue of row" headers=rowValue.rowIndex (click)="matrixSelection(rowValue)"
+                [ngClass] = "setActiveColumn(rowValue.colIndex)">
+                    <col class="matrixcolvalue" span={{rowValue.colIndex}}/>
+                    <span [ngClass] ="cellActivity(rowValue)">{{rowValue.value}}</span>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="sequences">
+        <table class="sequencetable">
+            <tr class="sequencerow">
+                <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.firstSequence">
+                    {{rowValue}}
+                </th>
+            </tr>
+            <tr class="sequencerow">
+                <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
+                    {{rowValue}}
+                </th>
+            </tr>
+            <tr class="sequencerow" >
+                <th class="sequencerowvalue" *ngFor = "let rowValue of protocol.secondSequence">
+                    {{rowValue}}
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="bottom-bar">
 
-<div class="matrix">
-    <table class="matrixtable">
-        <tr *ngFor = "let row of protocol.matrix" [ngClass] = "setActiveRow(row)">
-            <th *ngFor = "let rowValue of row" headers=rowValue.rowIndex (click)="matrixSelection(rowValue)"
-            [ngClass] = "setActiveColumn(rowValue.colIndex)">
-                <col class="matrixcolvalue" span={{rowValue.colIndex}}/>
-                {{rowValue.value}}
-                {{rowValue.rowIndex}}
-                {{rowValue.colIndex}}
-            </th>
-        </tr>
-    </table>
-</div>
+    </div>
+
+</section>

@@ -78,22 +78,35 @@ export class GameboardComponent {
 
   }
 
+  cellActivity(rowValue: Matrix) {
+    let cellActivity = {
+      active: rowValue.active == true,
+      notactive: rowValue.active == false
+    }
+    return cellActivity;
+  }
+
   seeallvalues(){
 
   }
 
   matrixSelection(rowValue: Matrix){
     //Row Active
-    if(rowValue.rowIndex == this.activeLine.activeRowNumber && this.activeLine.rowActive){
+    if(rowValue.rowIndex == this.activeLine.activeRowNumber 
+          && this.activeLine.rowActive && rowValue.active){
       this.activeLine.rowActive = false;
       this.activeLine.activeColNumber = rowValue.colIndex;
       this.activeLine.colActive = true;
-    
+      rowValue.active = false;
+      this.protocol.buffer.push(rowValue.value);
     //Col Active
-    } else if (rowValue.colIndex == this.activeLine.activeColNumber && this.activeLine.colActive) {
+    } else if (rowValue.colIndex == this.activeLine.activeColNumber 
+          && this.activeLine.colActive && rowValue.active) {
       this.activeLine.rowActive = true;
       this.activeLine.activeRowNumber = rowValue.rowIndex;
       this.activeLine.colActive = false;
+      rowValue.active = false;
+      this.protocol.buffer.push(rowValue.value);
     } else {
       console.log("NOT ACTIVE CELL");
     }
