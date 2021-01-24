@@ -30,7 +30,7 @@ export class GameboardComponent {
 
   ngOnInit(): void {
     this.protocol = new Protocol(0);
-    this._gbservice.initializeBuffer(this.protocol);
+    this._gbservice.initializeGame(this.protocol);
     this.activeMatrix = this.protocol.matrix;
   }
 
@@ -110,6 +110,10 @@ export class GameboardComponent {
     } else {
       console.log("NOT ACTIVE CELL");
     }
+  }
+
+  exitgame(){
+    
   }
 
 }

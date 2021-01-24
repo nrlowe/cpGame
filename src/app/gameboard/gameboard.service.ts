@@ -15,14 +15,14 @@ export class GameboardService {
 
   }
 
-  initializeBuffer(protocol: Protocol){
+  initializeGame(protocol: Protocol){
     protocol.score = 0;
 
     // Starting sequence size is 2
 
     protocol.difficulty = 0;
     protocol.firstSequence = this.produceSeriesOne(protocol);
-    protocol.matrix = this.produceMatrix(3, this.randomizeSequnces(protocol))
+    protocol.matrix = this.produceMatrix(1, this.randomizeSequnces(protocol))
     return protocol;
   }
 
@@ -34,8 +34,6 @@ export class GameboardService {
     //Sequence as a maze through the matrix
     //how to make it recursive?
     var matrixSize = size + 1;
-    var row = 0;
-    var column = 0;
     var matrix: Matrix[][] = [];
     //combine the sequences together so its one seq unce, not array of sequences,
     //random configs based off difficulty
@@ -46,15 +44,33 @@ export class GameboardService {
       }
       matrix.push(rowArray);
     }
-    //TODO
-    // var firstPlacement = this.randomInt(matrixSize);
-    // for(let i = 0; i < sequence.length; i++){
-    //   if(matrix[firstPlacement][column] == null){
-    //     matrix[firstPlacement][column] = sequence[i];
-    //     row = firstPlacement;
-    //   }
-    // }
-    
+    return this.loadSequenceOnMatrix(matrixSize, matrix, sequence);
+  }
+
+  private loadSequenceOnMatrix(size: number, matrix: Matrix[][], sequence:String[]){
+    var row = 0;
+    var column = this.randomInt(size);
+    var columnActive = true;
+    var rowActive = false;
+    if(size > sequence.length){
+      sequence.unshift(this.boardConstants[this.randomInt(this.boardConstants.length)]);
+    } 
+    for(let i = 0; i < sequence.length; i++){
+      if(matrix[row][column].value != sequence[i] && columnActive){
+        matrix[row][column].value = sequence[i];
+        row = this.randomInt(size);
+        rowActive = true;
+        columnActive = false;
+      }
+      if(matrix[row][column].value != sequence[i] && rowActive){
+        matrix[row][column].value = sequence[i];
+        column = this.randomInt(size);
+        rowActive = false;
+        columnActive = true;
+      }
+    }
+    // if solution is different than sequence, add to database as it has more than
+    // correct answer
     return matrix;
   }
 
@@ -62,7 +78,7 @@ export class GameboardService {
       var finalSequence: String[] = [];
       var choices: Number[] = [];
       var notRandom: boolean = true;
-      var numOfSequences = 1;
+      var numOfSequences = 0;
       if(typeof protocol.firstSequence !== 'undefined'){
         numOfSequences++;
       }
@@ -74,7 +90,10 @@ export class GameboardService {
       }
       //TODO: beter way to do this
       while(choices.length != numOfSequences){
-        var input = this.randomInt(numOfSequences);
+        console.log("Choices length = " + choices.length);
+        console.log("Number length = " + numOfSequences);
+        console.log("==============");
+        var input = this.randomInt(numOfSequences + 1);
         if(input == 1 && !choices.includes(2)){
           finalSequence = finalSequence.concat(protocol.firstSequence);
           choices.push(input);
@@ -86,6 +105,7 @@ export class GameboardService {
           choices.push(input);
         }
       }
+      console.log(finalSequence);
       return finalSequence;
   }
 
