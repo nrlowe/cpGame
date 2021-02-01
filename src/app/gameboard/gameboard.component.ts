@@ -18,7 +18,8 @@ export class GameboardComponent {
   activeLine: MaxtrixActivity = new MaxtrixActivity(0, true, 0, false);
   activeArray: Matrix[] = [];
   activeMatrix: Matrix[][] = [];
-  
+  activeBufferIndex = 0;
+
   constructor(private _gbservice : GameboardService) {
 
   //   this.board = [];
@@ -30,6 +31,7 @@ export class GameboardComponent {
 
   ngOnInit(): void {
     this.protocol = new Protocol(0);
+    //is init only on load? should the protocol be a state in case of page refresh?
     this._gbservice.initializeGame(this.protocol);
     this.activeMatrix = this.protocol.matrix;
   }
@@ -98,7 +100,8 @@ export class GameboardComponent {
       this.activeLine.activeColNumber = rowValue.colIndex;
       this.activeLine.colActive = true;
       rowValue.active = false;
-      this.protocol.buffer.push(rowValue.value);
+      this.protocol.buffer[this.activeBufferIndex] = rowValue.value;
+      this.activeBufferIndex++;
     //Col Active
     } else if (rowValue.colIndex == this.activeLine.activeColNumber 
           && this.activeLine.colActive && rowValue.active) {
@@ -106,7 +109,8 @@ export class GameboardComponent {
       this.activeLine.activeRowNumber = rowValue.rowIndex;
       this.activeLine.colActive = false;
       rowValue.active = false;
-      this.protocol.buffer.push(rowValue.value);
+      this.protocol.buffer[this.activeBufferIndex] =  rowValue.value;
+      this.activeBufferIndex++;
     } else {
       console.log("NOT ACTIVE CELL");
     }

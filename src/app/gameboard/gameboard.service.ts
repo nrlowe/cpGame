@@ -21,6 +21,7 @@ export class GameboardService {
     // Starting sequence size is 2
 
     protocol.difficulty = 0;
+    protocol.buffer = new Array(3);
     protocol.firstSequence = this.produceSeriesOne(protocol);
     protocol.matrix = this.produceMatrix(1, this.randomizeSequnces(protocol))
     return protocol;
